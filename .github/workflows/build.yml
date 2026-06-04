@@ -25,7 +25,7 @@ jobs:
           --add-data "latte.png;."
           --add-data "mocha.png;."
           --add-data "frappe.png;."
-          "Brew Lab.py"
+          "BrewLab.py"
 
       - name: Upload EXE
         uses: actions/upload-artifact@v4
