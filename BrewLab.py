@@ -1,6 +1,13 @@
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
+import os
+import sys
+
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), relative_path)
 
 
 def salirventana():
@@ -20,7 +27,7 @@ def abrir_cafe(nombre, imagen):
     bg="#111111",fg="#E8C87A")
     titulo.pack(pady=20)
 
-    foto = Image.open(imagen)
+    foto = Image.open(resource_path(imagen))
     foto = foto.resize((250,250))
     foto_tk = ImageTk.PhotoImage(foto)
 
@@ -329,7 +336,7 @@ ventana.attributes("-fullscreen", True)
 
 ventana.config(bg="#111111",bd=20)
 
-logo = Image.open("Logo.jpg")
+logo = Image.open(resource_path("Logo.jpg"))
 
 logo = logo.resize((220,220))
 
