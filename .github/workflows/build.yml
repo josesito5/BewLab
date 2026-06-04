@@ -1,0 +1,34 @@
+name: Build EXE
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pyinstaller pillow
+
+      - name: Build EXE
+        run: >
+          pyinstaller --onefile --windowed
+          --add-data "Logo.jpg;."
+          --add-data "espresso.png;."
+          --add-data "capuccino.png;."
+          --add-data "latte.png;."
+          --add-data "mocha.png;."
+          --add-data "frappe.png;."
+          "Brew Lab.py"
+
+      - name: Upload EXE
+        uses: actions/upload-artifact@v3
+        with:
+          name: BrewLab-exe
+          path: dist/
