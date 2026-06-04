@@ -28,7 +28,7 @@ jobs:
           "Brew Lab.py"
 
       - name: Upload EXE
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: BrewLab-exe
           path: dist/
