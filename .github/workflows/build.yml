@@ -19,6 +19,7 @@ jobs:
       - name: Build EXE
         run: >
           pyinstaller --onefile --windowed
+          --icon "logo en ico.ico"
           --add-data "Logo.jpg;."
           --add-data "espresso.png;."
           --add-data "capuccino.png;."
